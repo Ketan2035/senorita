@@ -1,6 +1,6 @@
 import pyttsx3
 import speech_recognition as sr
-from language import (
+from utilities.language import (
     detect_language,
     translate_to_english,
     translate_from_english

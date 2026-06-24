@@ -93,68 +93,68 @@ def open_app(app_name):
         return f"Error opening {app_name}: {str(e)}"
     
 
+# not working
 
+# def close_app(app_name):
 
-def close_app(app_name):
+#     app_name = app_name.lower().strip()
 
-    app_name = app_name.lower().strip()
+#     PROCESS_MAP = {
 
-    PROCESS_MAP = {
+#         "chrome": ["chrome.exe"],
+#         "youtube": ["chrome.exe"],
+#         "google": ["chrome.exe"],
+#         "gmail": ["chrome.exe"],
+#         "github": ["chrome.exe"],
+#         "linkedin": ["chrome.exe"],
+#         "chatgpt": ["chrome.exe"],
 
-        "chrome": ["chrome.exe"],
-        "youtube": ["chrome.exe"],
-        "google": ["chrome.exe"],
-        "gmail": ["chrome.exe"],
-        "github": ["chrome.exe"],
-        "linkedin": ["chrome.exe"],
-        "chatgpt": ["chrome.exe"],
+#         "vscode": ["code.exe"],
+#         "notepad": ["notepad.exe"],
+#         "calculator": ["calculatorapp.exe", "calc.exe"],
+#         "cmd": ["cmd.exe"],
+#         "powershell": ["powershell.exe"],
+#         "explorer": ["explorer.exe"],
+#         "mspaint": ["mspaint.exe"],
+#         "terminal": ["windowsterminal.exe", "wt.exe"]
+#     }
 
-        "vscode": ["code.exe"],
-        "notepad": ["notepad.exe"],
-        "calculator": ["calculatorapp.exe", "calc.exe"],
-        "cmd": ["cmd.exe"],
-        "powershell": ["powershell.exe"],
-        "explorer": ["explorer.exe"],
-        "mspaint": ["mspaint.exe"],
-        "terminal": ["windowsterminal.exe", "wt.exe"]
-    }
+#     targets = PROCESS_MAP.get(app_name)
 
-    targets = PROCESS_MAP.get(app_name)
+#     if not targets:
+#         targets = [app_name + ".exe"]
 
-    if not targets:
-        targets = [app_name + ".exe"]
+#     closed = []
 
-    closed = []
+#     for proc in psutil.process_iter(['pid', 'name']):
 
-    for proc in psutil.process_iter(['pid', 'name']):
+#         try:
 
-        try:
+#             proc_name = proc.info['name']
 
-            proc_name = proc.info['name']
+#             if not proc_name:
+#                 continue
 
-            if not proc_name:
-                continue
+#             if proc_name.lower() in [
+#                 p.lower() for p in targets
+#             ]:
 
-            if proc_name.lower() in [
-                p.lower() for p in targets
-            ]:
+#                 proc.kill()
 
-                proc.kill()
+#                 closed.append(proc_name)
 
-                closed.append(proc_name)
+#         except:
+#             pass
 
-        except:
-            pass
+#     if closed:
 
-    if closed:
+#         return (
+#             f"Closed {', '.join(closed)}"
+#         )
 
-        return (
-            f"Closed {', '.join(closed)}"
-        )
-
-    return (
-        f"No running process found for {app_name}"
-    )
+#     return (
+#         f"No running process found for {app_name}"
+#     )
 
 
 # ==========================================

@@ -1,5 +1,5 @@
 import requests
-from config import BACKEND_URL
+from utilities.config import BACKEND_URL
 
 def ask_ai(message):
 

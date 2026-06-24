@@ -1,23 +1,19 @@
 import threading
 import subprocess
 import datetime
-
-from voice import speak, listen
-from ai import ask_ai
-from weather import get_weather
-from notes import save_note, show_notes
-
-from system import *
+from open_module.app import open_app, open_folder, run_command
 from computer_control import *
+from open_module.browser import *
 
-from language import (
+from utilities.voice import speak, listen
+
+from utilities.language import (
     detect_language,
     translate_to_english,
     translate_from_english
 )
 
 from brain import get_intent
-
 
 def start_backend():
     subprocess.run(["python", "app.py"])
@@ -125,7 +121,89 @@ while True:
 
             continue
 
-        result = open_app(app_name)
+        websites = {
+            # ======================
+            # BASIC DAILY USE
+            # ======================
+            "youtube": open_youtube,
+            "google": open_google,
+            "gmail": open_gmail,
+            "chatgpt": open_chatgpt,
+
+            # ======================
+            # SOCIAL / COMMUNICATION
+            # ======================
+            "instagram": lambda: open_website("https://instagram.com"),
+            "facebook": lambda: open_website("https://facebook.com"),
+            "twitter": lambda: open_website("https://x.com"),
+            "linkedin": lambda: open_website("https://linkedin.com"),
+            "whatsapp": lambda: open_website("https://web.whatsapp.com"),
+            "telegram": lambda: open_website("https://web.telegram.org"),
+            "github": lambda: open_website("https://github.com/Ketan2035"),
+
+            # ======================
+            # STUDY / CODING
+            # ======================
+            "leetcode": lambda: open_website("https://leetcode.com"),
+            "geeksforgeeks": lambda: open_website("https://geeksforgeeks.org"),
+            "stackoverflow": lambda: open_website("https://stackoverflow.com"),
+            "wikipedia": lambda: open_website("https://wikipedia.org"),
+
+            # ======================
+            # AI TOOLS
+            # ======================
+            "gemini": lambda: open_website("https://gemini.google.com"),
+            "claude": lambda: open_website("https://claude.ai"),
+            "perplexity": lambda: open_website("https://perplexity.ai"),
+
+            # ======================
+            # PRODUCTIVITY
+            # ======================
+            "notion": lambda: open_website("https://notion.so"),
+            "trello": lambda: open_website("https://trello.com"),
+            "figma": lambda: open_website("https://figma.com"),
+            "canva": lambda: open_website("https://canva.com"),
+
+            # ======================
+            # CLOUD / STORAGE
+            # ======================
+            "google drive": lambda: open_website("https://drive.google.com"),
+            "dropbox": lambda: open_website("https://dropbox.com"),
+            "onedrive": lambda: open_website("https://onedrive.live.com"),
+
+            # ======================
+            # ENTERTAINMENT
+            # ======================
+            "netflix": lambda: open_website("https://netflix.com"),
+            "prime video": lambda: open_website("https://primevideo.com"),
+            "spotify": lambda: open_website("https://open.spotify.com"),
+
+            # ======================
+            # LEARNING / COURSES
+            # ======================
+            "udemy": lambda: open_website("https://udemy.com"),
+            "coursera": lambda: open_website("https://coursera.org"),
+            "edx": lambda: open_website("https://edx.org"),
+
+            # ======================
+            # DEV / DEPLOYMENT
+            # ======================
+            "vercel": lambda: open_website("https://vercel.com"),
+            "netlify": lambda: open_website("https://netlify.com"),
+            "replit": lambda: open_website("https://replit.com"),
+
+            # ======================
+            # UTILITIES
+            # ======================
+            "google_translate": lambda: open_website("https://translate.google.com"),
+            "google maps": lambda: open_website("https://maps.google.com"),
+            "weather": lambda: open_website("https://weather.com"),
+        }
+
+        if app_name in websites:
+            result = websites[app_name]()
+        else:
+            result = open_app(app_name)
 
         speak(result)
 
@@ -277,7 +355,7 @@ while True:
 
     elif intent == "press_enter":
 
-        result = press_enter()
+        result = enter()
 
         speak(result)
 
@@ -288,7 +366,7 @@ while True:
 
     elif intent == "press_tab":
 
-        result = press_tab()
+        result = tab()
 
         speak(result)
 
@@ -373,7 +451,7 @@ while True:
 
     elif intent == "copy":
 
-        result = copy_text()
+        result = copy()
 
         speak(result)
 
@@ -384,7 +462,7 @@ while True:
 
     elif intent == "paste":
 
-        result = paste_text()
+        result = paste()
 
         speak(result)
 
@@ -399,7 +477,104 @@ while True:
 
         speak(result)
 
+    #=================================
+    #  close tab
+    #=================================
 
+    elif intent == "close_tab":
+
+        result = close_tab()
+
+        speak(result)
+
+    # =================================
+    # UNDO
+    # =================================
+    elif intent == "undo":
+
+        result = undo()
+
+        speak(result)
+
+
+    # =================================
+    # REDO
+    # =================================
+    elif intent == "redo":
+
+        result = redo()
+
+        speak(result)
+
+
+    # =================================
+    # SAVE
+    # =================================
+    elif intent == "save":
+
+        result = save()
+
+        speak(result)
+
+
+    # =================================
+    # NEW TAB
+    # =================================
+    elif intent == "open new_tab":
+
+        result = new_tab()
+
+        speak(result)
+
+
+    # =================================
+    # RESTORE WINDOW
+    # =================================
+    elif intent == "restore_window":
+
+        result = restore_window()
+
+        speak(result)
+
+
+    # =================================
+    # LOCK SCREEN
+    # =================================
+    elif intent == "lock_screen":
+
+        result = lock_screen()
+
+        speak(result)
+
+
+    # =================================
+    # REFRESH
+    # =================================
+    elif intent == "refresh":
+
+        result = refresh()
+
+        speak(result)
+
+
+    # =================================
+    # SWITCH TAB
+    # =================================
+    elif intent == "switch_tab":
+
+        result = switch_tab()
+
+        speak(result)
+
+
+    # =================================
+    # REOPEN TAB
+    # =================================
+    elif intent == "reopen_tab":
+
+        result = reopen_tab()
+
+        speak(result)        
     # =================================
     # RUN COMMAND
     # =================================
@@ -464,21 +639,21 @@ while True:
     # CHAT
     # =================================
 
-    else:
+    # else:
 
-        answer = ask_ai(
+    #     answer = ask_ai(
 
-            intent_data.get(
-                "message",
-                english_query
-            )
+    #         intent_data.get(
+    #             "message",
+    #             english_query
+    #         )
 
-        )
+    #     )
 
-        speak(
-            translate_from_english(
-                answer,
-                user_language
-            )
-        )
+    #     speak(
+    #         translate_from_english(
+    #             answer,
+    #             user_language
+    #         )
+    #     )
 

@@ -1,5 +1,5 @@
 from groq import Groq
-from config import GROQ_API_KEY
+from utilities.config import GROQ_API_KEY
 import json
 
 client = Groq(
@@ -44,7 +44,7 @@ Available actions:
 - switch_window
 - switch_tab
 - close_tab
-- new_tab
+- open new_tab
 - reopen_closed_tab
 - select_all
 - copy
