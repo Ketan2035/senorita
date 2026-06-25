@@ -1,26 +1,26 @@
-# 🎙️ Senorita AI Desktop Assistant
+#  Senorita AI Desktop Assistant
 
 Senorita is a voice-controlled AI desktop assistant built with Python. It can understand voice commands, converse using AI, control your computer, automate browsers, open applications, manage notes, provide weather updates, and execute multi-step workflows.
 
 ---
 
-## 🚀 Features
+##  Features
 
-### 🗣️ Voice Assistant
+###  Voice Assistant
 
 * Speech-to-Text
 * Text-to-Speech
 * Continuous voice listening
 * Supports English, Hindi, and Hinglish commands
 
-### 🤖 AI Brain
+###  AI Brain
 
 * Powered by Groq LLM
 * Intent detection
 * Workflow generation
 * Natural language understanding
 
-### 💻 Desktop Control
+###  Desktop Control
 
 * Open applications
 * Close applications
@@ -30,7 +30,7 @@ Senorita is a voice-controlled AI desktop assistant built with Python. It can un
 * Open folders
 * Run system commands
 
-### 🖱️ Mouse Control
+###  Mouse Control
 
 * Click
 * Double Click
@@ -38,7 +38,7 @@ Senorita is a voice-controlled AI desktop assistant built with Python. It can un
 * Scroll Up
 * Scroll Down
 
-### ⌨️ Keyboard Control
+###  Keyboard Control
 
 * Type text
 * Press Enter
@@ -51,7 +51,7 @@ Senorita is a voice-controlled AI desktop assistant built with Python. It can un
 * Save
 * Select All
 
-### 🌐 Browser Automation
+###  Browser Automation
 
 * Open websites
 * Google Search
@@ -62,7 +62,7 @@ Senorita is a voice-controlled AI desktop assistant built with Python. It can un
 * Close tabs
 * Reopen closed tabs
 
-### 🎵 YouTube Automation
+###  YouTube Automation
 
 Example:
 
@@ -74,20 +74,20 @@ The assistant can:
 2. Search for the requested content
 3. Play the first video automatically
 
-### 🌦️ Weather
+###  Weather
 
 Get live weather information for any city.
 
-### 📝 Notes
+###  Notes
 
 * Save notes
 * Read notes
 
-### 📸 Screenshots
+###  Screenshots
 
 Take screenshots using voice commands.
 
-### 🔄 Workflows
+###  Workflows
 
 Example:
 
@@ -97,34 +97,56 @@ The AI converts this into a workflow and executes all steps automatically.
 
 ---
 
-# 🏗️ Project Structure
+#  Project Structure
 
 ```text
 senorita/
+
 │
 ├── main.py
 ├── brain.py
-├── ai.py
 ├── voice.py
-├── language.py
-├── weather.py
-├── notes.py
-├── system.py
-├── computer_control.py
 ├── config.py
-├── app.py
+├── language.py
 │
-├── requirements.txt
-├── .env
+│   ├── computer_control/
+│   │   ├── mouse.py
+│   │   ├── keyboard.py
+│   │   ├── window.py
+│   │
+│   ├── open_module/
+│   │   ├── app_launcher.py
+│   │   ├── websites.py
+│   │   ├── folders.py
+│   │   ├── browser.py
+│   │   └── __init__.py
+│   │
+│   ├── close_module/
+│   │   ├── apps.py
+│   │   ├── windows.py
+│   │   ├── tabs.py
+│   │   ├── power.py
+│   │   └── __init__.py
+│   │
+│   └── chat_module/
+│       ├── assistant.py
+│       ├── memory.py
+│       ├── notes.py
+│       ├── conversation.py
+│       └── __init__.py
 │
-├── screenshots/
-├── notes/
-└── README.md
+├── data/
+│   ├── notes.txt
+│   ├── memory.json
+│   └── history.json
+│
+└── logs/
+    └── senorita.log
 ```
 
 ---
 
-# ⚙️ Installation
+#  Installation
 
 ## 1. Clone Repository
 
@@ -176,7 +198,7 @@ WEATHER_API_KEY=your_weather_api_key
 
 ---
 
-# 🔑 API Keys Required
+#  API Keys Required
 
 ## Groq API
 
@@ -198,7 +220,7 @@ Generate API key and add it to `.env`.
 
 ---
 
-# ▶️ Run The Project
+#  Run The Project
 
 ```bash
 python main.py
@@ -206,7 +228,7 @@ python main.py
 
 ---
 
-# 🎤 Example Commands
+#  Example Commands
 
 ## Open Apps
 
@@ -302,7 +324,7 @@ Senorita maximize window
 
 ---
 
-# 🧠 Workflow Example
+#  Workflow Example
 
 Input:
 
@@ -333,7 +355,7 @@ Generated Workflow:
 
 ---
 
-# 🛠️ Technologies Used
+#  Technologies Used
 
 * Python
 * Groq LLM
@@ -349,7 +371,7 @@ Generated Workflow:
 
 ---
 
-# ⚠️ Disclaimer
+#  Disclaimer
 
 This project can control mouse, keyboard, browser, and applications on your computer.
 
@@ -357,7 +379,7 @@ Use carefully and do not execute untrusted commands.
 
 ---
 
-# 📌 Future Improvements
+#  Future Improvements
 
 * Memory System
 * OCR Screen Reading
@@ -371,7 +393,7 @@ Use carefully and do not execute untrusted commands.
 
 ---
 
-# 👨‍💻 Author
+#  Author
 
 Ketan Kumar
 
