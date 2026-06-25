@@ -93,7 +93,6 @@ def search_in_context(current_site, query):
 # ==========================================
 def open_youtube():
     webbrowser.open("https://youtube.com")
-    speak("hii i am ketan")
     return "Opening YouTube"
 
 
