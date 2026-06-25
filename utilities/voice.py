@@ -1,4 +1,4 @@
-import pyttsx3
+
 import speech_recognition as sr
 from utilities.language import (
     detect_language,
@@ -6,19 +6,23 @@ from utilities.language import (
     translate_from_english
 )
 
-engine = pyttsx3.init()
+ 
+import win32com.client
+
+speaker = win32com.client.Dispatch("SAPI.SpVoice")
 
 def speak(text):
-    print(f"Senorita: {text}")
-    engine.say(text)
-    engine.runAndWait()
+    print("Senorita:",text)
+    speaker.Speak(text)
 
+    
 def listen():
     r = sr.Recognizer()
 
     with sr.Microphone() as source:
         print("Listening...")
         audio = r.listen(source)
+      
 
     try:
         text = r.recognize_google(audio)

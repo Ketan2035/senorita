@@ -1,7 +1,7 @@
 from groq import Groq
 from utilities.config import GROQ_API_KEY
 import json
-
+from utilities.voice import *
 client = Groq(
     api_key=GROQ_API_KEY
 )
@@ -40,6 +40,12 @@ Available actions:
 - close_app
 - close_window
 - minimize_window
+- shutdown
+- restart
+- sleep
+- lock
+- close_all_windows
+- close_browser
 - maximize_window
 - switch_window
 - switch_tab
@@ -108,7 +114,26 @@ Senorita open youtube
   "intent":"open_app",
   "app":"youtube"
 }
+User:
+Senorita close chrome
 
+{
+  "intent":"close_app",
+  "app":"chrome"
+}
+User:
+Senorita restart pc
+
+{
+  "intent":"restart"
+}
+
+User:
+Senorita lock screen
+
+{
+  "intent":"lock"
+}
 User:
 Senorita open youtube and search for Kesariya
 
@@ -251,8 +276,10 @@ def get_intent(user_input):
         return data
 
     except Exception as e:
-
+        speak(" I am Hungry . I need token")
+        
         print("Brain Error:NOT A VALID INPUT", e)
+ 
 
         return {
             "intent": "chat",

@@ -4,8 +4,8 @@ import datetime
 from open_module.app import open_app, open_folder, run_command
 from computer_control import *
 from open_module.browser import *
-
-from utilities.voice import speak, listen
+from close_module.close import *
+from utilities.voice import *
 
 from utilities.language import (
     detect_language,
@@ -25,7 +25,7 @@ backend_thread = threading.Thread(
     daemon=True
 )
 
-backend_thread.start()
+# backend_thread.start()
 
 
 # Greeting
@@ -592,6 +592,82 @@ while True:
         result = run_command(command)
 
         speak(result)
+
+
+     # =================================
+    # CLOSE APP
+    # =================================
+
+    elif intent == "close_app":
+
+        app_name = intent_data.get("app")
+
+        if not app_name:
+            speak("Which app should I close?")
+            continue
+
+        result = close_app(app_name)
+        speak(result)
+
+
+    # =================================
+    # CLOSE ALL WINDOWS
+    # =================================
+
+    elif intent == "close_all_windows":
+
+        result = close_all_windows()
+        speak(result)
+
+
+    # =================================
+    # CLOSE BROWSER
+    # =================================
+
+    elif intent == "close_browser":
+
+        result = close_browser()
+        speak(result)
+
+
+    # =================================
+    # SHUTDOWN
+    # =================================
+
+    elif intent == "shutdown":
+
+        result = shutdown_pc()
+        speak(result)
+
+
+    # =================================
+    # RESTART
+    # =================================
+
+    elif intent == "restart":
+
+        result = restart_pc()
+        speak(result)
+
+
+    # =================================
+    # SLEEP
+    # =================================
+
+    elif intent == "sleep":
+
+        result = sleep_pc()
+        speak(result)
+
+
+    # =================================
+    # LOCK
+    # =================================
+
+    elif intent == "lock":
+
+        result = lock_pc()
+        speak(result)        
 
 
     # =================================
