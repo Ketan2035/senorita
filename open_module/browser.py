@@ -89,7 +89,7 @@ def search_in_context(current_site, query):
 
 
 # ==========================================
-# Quick Website Shortcuts
+# Quick Website Shortcut
 # ==========================================
 def open_youtube():
     webbrowser.open("https://youtube.com")
